@@ -28,6 +28,20 @@ Docker uses a client-server architecture, since the docker client and docker dae
 * A *docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container via the docker client (cli) or docker API; connect a container to network; attach storage; create a new image from the container.
 * A *docker service* scale containers across multiple docker daemons. Each member of the swarm is a docker daemon. A service define the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
 
+**Docker Engine**
+The *docker engine* consist of the following:
+* the *docker daemon*
+* the *containerd*
+* the *runc*
+
+**Open Container Initiative**
+The Open Container Initiative (OCI) is an open governance structure for the express purpose of creating open industry standards around container formats and runtimes. The container related specifications are:
+* Image Specification: The OCI Image Specification specification is to enable the creation of interoperable tools for building, transporting, and preparing a container image to run. ([Reference](https://github.com/opencontainers/image-spec/blob/master/spec.md))
+* Container Runtime Specification: The OCI Runtime Specification aims to specify the configuration, execution environment, and lifecycle of a container. ([Reference](https://github.com/opencontainers/runtime-spec/blob/master/spec.md))
+
+For more details on the *Open Container Specification*, please visit the sites:[Website](https://opencontainers.org/) & [Github](https://github.com/opencontainers).
+
+
 For more details, please read the official [Docker Documentation](https://docs.docker.com/get-started/overview/).
 
 ## Installation
