@@ -29,16 +29,15 @@ Docker uses a client-server architecture, since the docker client and docker dae
 * A *docker service* scale containers across multiple docker daemons. Each member of the swarm is a docker daemon. A service define the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
 
 **Docker Engine**
+<img
+  src="https://i0.wp.com/www.docker.com/blog/wp-content/uploads/974cd631-b57e-470e-a944-78530aaa1a23-1.jpg"
+  width="400"
+  align="right"
+/>
 The *docker engine* consist of the following:
 * the *docker daemon* is the persistent process that manages docker objects like containers, images, volumes, etc.. 
 * the *containerd* was designed to be used by Docker and Kubernetes as well as any other container platform that wants to abstract away syscalls or OS specific functionality to run containers on linux, windows, solaris, or other OSes. ([Reference](https://containerd.io/))
 * the *runc* is the implementation for the OCI container runtime specification. It is a CLI tool for spawning and running containers according to the OCI specification. ([Reference](https://github.com/opencontainers/runc))
-
-<img
-  src="https://i0.wp.com/www.docker.com/blog/wp-content/uploads/974cd631-b57e-470e-a944-78530aaa1a23-1.jpg"
-  width="400"
-  align="center"
-/>
 
 **Open Container Initiative**
 
