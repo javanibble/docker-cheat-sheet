@@ -8,7 +8,7 @@
 
 ## Table of Contents
 * [Overview](#overview)
-* [Docker Engine](#docker-engine)
+* [Docker Architecture](#docker-architecture)
 * [Installation](#installation)
 * [Command-line Reference](#command-line-reference)
 
@@ -29,19 +29,25 @@ Docker uses a client-server architecture, since the docker client and docker dae
 * A *docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container via the docker client (cli) or docker API; connect a container to network; attach storage; create a new image from the container.
 * A *docker service* scale containers across multiple docker daemons. Each member of the swarm is a docker daemon. A service define the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
 
-## Docker Engine
-
-
+## Docker Architecture
 
 <img
   src="https://i0.wp.com/www.docker.com/blog/wp-content/uploads/974cd631-b57e-470e-a944-78530aaa1a23-1.jpg"
   width="400"
   align="right"
 />
-The *docker engine* consist of the following:
-* `dockerd` is the docker daemon and relies on a OCI compliant runtime (invoked via the `containerd` daemon) as its interface to the Linux kernel namespaces, cgroups, and SELinux.
-* `containerd` is the container daemon was originally built as an integration point for OCI runtimes like runc.  ([Reference](https://containerd.io/))
+
+The Docker Engine acts as a client-server application with:
+
+* Client: A command line interface (CLI) client `docker`.
+* API: APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
+* Server: A server with a long-running daemon process called `dockerd` (docker daemon).  It relies on a OCI compliant runtime (invoked via the `containerd` daemon) as its interface to the Linux kernel namespaces, cgroups, and SELinux.
+
+
+The container runtime consist of the following components:
+* `containerd` is the container daemon and was originally built as an integration point for OCI runtimes like runc. The container lifecycle management functionality was moved out of the docker daemon into the container daemon.  ([Reference](https://containerd.io/))
 * `runc` is the implementation for the OCI container runtime specification. It is a CLI tool for spawning and running containers according to the OCI specification. ([Reference](https://github.com/opencontainers/runc))
+
 
 **Open Container Initiative**
 
