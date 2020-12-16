@@ -35,9 +35,10 @@ The *docker engine* consist of the following:
 * the *runc*
 
 **Open Container Initiative**
+
 The Open Container Initiative (OCI) is an open governance structure for the express purpose of creating open industry standards around container formats and runtimes. The container related specifications are:
-* Image Specification: The OCI Image Specification specification is to enable the creation of interoperable tools for building, transporting, and preparing a container image to run. ([Reference](https://github.com/opencontainers/image-spec/blob/master/spec.md))
-* Container Runtime Specification: The OCI Runtime Specification aims to specify the configuration, execution environment, and lifecycle of a container. ([Reference](https://github.com/opencontainers/runtime-spec/blob/master/spec.md))
+* *Image Specification*: The OCI Image Specification specification is to enable the creation of interoperable tools for building, transporting, and preparing a container image to run. ([Reference](https://github.com/opencontainers/image-spec/blob/master/spec.md))
+* *Container Runtime Specification*: The OCI Runtime Specification aims to specify the configuration, execution environment, and lifecycle of a container. ([Reference](https://github.com/opencontainers/runtime-spec/blob/master/spec.md))
 
 For more details on the *Open Container Specification*, please visit the sites:[Website](https://opencontainers.org/) & [Github](https://github.com/opencontainers).
 
