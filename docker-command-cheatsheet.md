@@ -12,16 +12,16 @@
 * [Command-line Reference](#command-line-reference)
 
 ## Overview 
-Docker uses a client-server architecture, since the docker client and docker daemon are separate binaries.  The client communicates with the daemon via a REST API for example Unix Sockets. The docker client can connect to several docker daemons. 
-* The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, etc.. 
-* The docker client (`docker`) is used by the user to interact with docker, and sends the commands to the docker daemon. 
-* The docker registry stores docker images. The docker hub is a public registry and is used by docker by default to look for images.
-
 <img
   src="https://docs.docker.com/engine/images/architecture.svg"
   width="400"
-  align="center"
+  align="right"
 />
+Docker uses a client-server architecture, since the docker client and docker daemon are separate binaries.  The client communicates with the daemon via a REST API for example Unix Sockets. The docker client can connect to several docker daemons. 
+* The docker client (`docker`) is used by the user to interact with docker, and sends the commands to the docker daemon. 
+* The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, etc.. 
+* The docker registry stores docker images. The docker hub is a public registry and is used by docker by default to look for images.
+
 
 **Docker Objects**
 * A *docker image* is a read-only template with instructions for creating a *docker container*. An image can be based on another image. Use a *Dockerfile* to build your own image.Each instruction in a Dockerfile creates a layer in the image.
