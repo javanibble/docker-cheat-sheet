@@ -32,7 +32,7 @@ Docker uses a client-server architecture, since the docker client and docker dae
 ## Docker Architecture
 
 <img
-  src="https://i0.wp.com/www.docker.com/blog/wp-content/uploads/974cd631-b57e-470e-a944-78530aaa1a23-1.jpg"
+  src="images/docker-architecture.png"
   width="400"
   align="right"
 />
