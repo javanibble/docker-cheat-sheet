@@ -15,10 +15,10 @@
 ## Overview 
 <img
   src="images/docker-overview.png"
-  width="400"
+  width="500"
   align="right"
 />
-Docker uses a client-server architecture since the docker client and docker daemon is separate binaries. The client communicates with the daemon via a REST API for example Unix Sockets. The docker client can connect to several docker daemons.
+Docker uses a client-server architecture since the docker client and docker daemon is separate binaries. The client communicates with the daemon via a REST API (Network Interface, Unix Sockets). The docker client can connect to several docker daemons.
 * The docker client (`docker`) is used by the user to interact with docker and sends the commands to the docker daemon.
 * The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, etc...
 * The docker registry stores docker images. The docker hub is a public registry and is used by docker by default to look for images.
