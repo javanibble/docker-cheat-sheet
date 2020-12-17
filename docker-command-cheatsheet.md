@@ -14,20 +14,21 @@
 
 ## Overview 
 <img
-  src="https://docs.docker.com/engine/images/architecture.svg"
+  src="images/docker-overview.png"
   width="400"
   align="right"
 />
-Docker uses a client-server architecture, since the docker client and docker daemon are separate binaries.  The client communicates with the daemon via a REST API for example Unix Sockets. The docker client can connect to several docker daemons. 
-* The docker client (`docker`) is used by the user to interact with docker, and sends the commands to the docker daemon. 
-* The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, etc.. 
+Docker uses a client-server architecture since the docker client and docker daemon is separate binaries. The client communicates with the daemon via a REST API for example Unix Sockets. The docker client can connect to several docker daemons.
+* The docker client (`docker`) is used by the user to interact with docker and sends the commands to the docker daemon.
+* The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, etc...
 * The docker registry stores docker images. The docker hub is a public registry and is used by docker by default to look for images.
 
-
 **Docker Objects**
-* A *docker image* is a read-only template with instructions for creating a *docker container*. An image can be based on another image. Use a *Dockerfile* to build your own image.Each instruction in a Dockerfile creates a layer in the image.
+* A *docker image* is a read-only template with instructions for creating a docker container. An image can be based on another image. Use a Dockerfile to build your own image. Each instruction in a Dockerfile creates a layer in the image.
 * A *docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container via the docker client (cli) or docker API; connect a container to network; attach storage; create a new image from the container.
-* A *docker service* scale containers across multiple docker daemons. Each member of the swarm is a docker daemon. A service define the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
+* A *docker service* scale containers across multiple docker daemons. Each member of the swarm is a docker daemon. A service defines the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
+
+For more details, please read the official [Docker Documentation](https://docs.docker.com/get-started/overview/).
 
 ## Docker Architecture
 
@@ -39,14 +40,14 @@ Docker uses a client-server architecture, since the docker client and docker dae
 
 The Docker Engine acts as a client-server application with:
 
-* Client: A command line interface (CLI) client `docker`.
-* API: APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
-* Server: A server with a long-running daemon process called `dockerd` (docker daemon).  It relies on a OCI compliant runtime (invoked via the `containerd` daemon) as its interface to the Linux kernel namespaces, cgroups, and SELinux.
+* Client: The docker client (`docker`) is used by the user to interact with docker and sends the commands to the docker daemon.
+* API: The docker API interacts with the docker daemon. 
+* Server: The docker server has a long-running daemon process called `dockerd` (docker daemon). It relies on a OCI compliant runtime (invoked via the `containerd` daemon) as its interface to the Linux kernel namespaces, cgroups, and SELinux.
 
-
-The container runtime consist of the following components:
+Other components within the docker architecture are:
 * `containerd` is the container daemon and was originally built as an integration point for OCI runtimes like runc. The container lifecycle management functionality was moved out of the docker daemon into the container daemon.  ([Reference](https://containerd.io/))
 * `runc` is the implementation for the OCI container runtime specification. It is a CLI tool for spawning and running containers according to the OCI specification. ([Reference](https://github.com/opencontainers/runc))
+* `shim` is used to decouple the daemons from the containers.
 
 
 **Open Container Initiative**
@@ -58,7 +59,7 @@ The Open Container Initiative (OCI) is an open governance structure for the expr
 For more details on the *Open Container Specification*, please visit the sites:[Website](https://opencontainers.org/) & [Github](https://github.com/opencontainers).
 
 
-For more details, please read the official [Docker Documentation](https://docs.docker.com/get-started/overview/).
+
 
 ## Installation
 The following links contain guides on how to install docker on your machine:
