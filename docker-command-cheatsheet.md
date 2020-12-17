@@ -54,19 +54,20 @@ The Open Container Initiative (OCI) is an open governance structure for the expr
 For more details on the *Open Container Specification*, please visit the sites:[Website](https://opencontainers.org/) & [Github](https://github.com/opencontainers).
 
 ## Running Docker Containers
-<img
-  src="images/docker-overview.png"
-  width="500"
-  align="right"
-/>
 To run a docker container, you should use the following command:
 
 ```shell
 # A template for running a docker container.
 $ docker container run -it --name <Name> <IMAGE>:<TAG>
 
+# Start bash in a ubuntu within a docker container
 $ docker container run -it --name my-ubuntu ubuntu:latest bash
 ```
+<img
+  src="images/docker-overview.png"
+  width="500"
+  align="right"
+/>
 
 Docker takes the following steps after the command listed above is executed:
 1. The above command forms part of the Docker CLI.
