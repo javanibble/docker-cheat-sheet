@@ -76,14 +76,14 @@ Docker takes the following steps after the command listed above is executed:
 4. The docker daemon recieves the payload and performs the instructions.
 5. The docker daemon pulled the "Ubuntu" image from the Docker Hub (public registry)
 6. The docker daemon creates a new container from that image by performing the next steps:
-  6.1. The docker daemon calls `containerd` to start a new container.
-  6.2. The docker daemon uses `gRPC` to communicate with the `containerd`. (CRUD Style API) 
-  6.3. `containerd` creates an OCI bundle from the Docker image. 
-  6.4. `containerd` instructs `runc` to create a container using the OCI bundle.
-  6.5. `runc` interfaces with the OS kernel to get the constructs needed to create a container. (namespaces, cgroups, etc...)
-  6.6. `runc` starts the container as a child process. Once the container comes online, `runc` will exit.
-  6.7. `shim` becomes the new parent process.
-  6.8. The process is complete and the container is up and running.
+  * The docker daemon calls `containerd` to start a new container.
+  * The docker daemon uses `gRPC` to communicate with the `containerd`. (CRUD Style API) 
+  * `containerd` creates an OCI bundle from the Docker image. 
+  * `containerd` instructs `runc` to create a container using the OCI bundle.
+  * `runc` interfaces with the OS kernel to get the constructs needed to create a container. (namespaces, cgroups, etc...)
+  * `runc` starts the container as a child process. Once the container comes online, `runc` will exit.
+  * `shim` becomes the new parent process.
+  * The process is complete and the container is up and running.
 7. The newly created container may produce output.
 8. The Docker daemon streamed that output to the Docker client, and its displayed in the terminal.
 
