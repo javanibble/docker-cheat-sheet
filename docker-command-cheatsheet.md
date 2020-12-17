@@ -1,12 +1,17 @@
 <img
   src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png"
-  width="150"
+  width="100"
   align="right"
 />
 
 # Docker Cheat Sheet
 
 ## Table of Contents
+<img
+  src="images/docker-overview.png"
+  width="500"
+  align="right"
+/>
 * [Overview](#overview)
 * [Docker Architecture](#docker-architecture)
 * [Running Docker Containers](#running-docker-containers)
@@ -63,11 +68,6 @@ $ docker container run -it --name <Name> <IMAGE>:<TAG>
 # Start bash in a ubuntu within a docker container
 $ docker container run -it --name my-ubuntu ubuntu:latest bash
 ```
-<img
-  src="images/docker-overview.png"
-  width="500"
-  align="right"
-/>
 
 Docker takes the following steps after the command listed above is executed:
 1. The above command forms part of the Docker CLI.
@@ -76,14 +76,14 @@ Docker takes the following steps after the command listed above is executed:
 4. The docker daemon recieves the payload and performs the instructions.
 5. The docker daemon pulled the "Ubuntu" image from the Docker Hub (public registry)
 6. The docker daemon creates a new container from that image by performing the next steps:
-6.1 The docker daemon calls `containerd` to start a new container.
-6.2 The docker daemon uses `gRPC` to communicate with the `containerd`. (CRUD Style API) 
-6.3 `containerd` creates an OCI bundle from the Docker image. 
-6.4 `containerd` instructs `runc` to create a container using the OCI bundle.
-6.5 `runc` interfaces with the OS kernel to get the constructs needed to create a container. (namespaces, cgroups, etc...)
-6.6 `runc` starts the container as a child process. Once the container comes online, `runc` will exit.
-6.7 `shim` becomes the new parent process.
-6.8 The process is complete and the container is up and running.
+6.1. The docker daemon calls `containerd` to start a new container.
+6.2. The docker daemon uses `gRPC` to communicate with the `containerd`. (CRUD Style API) 
+6.3. `containerd` creates an OCI bundle from the Docker image. 
+6.4. `containerd` instructs `runc` to create a container using the OCI bundle.
+6.5. `runc` interfaces with the OS kernel to get the constructs needed to create a container. (namespaces, cgroups, etc...)
+6.6. `runc` starts the container as a child process. Once the container comes online, `runc` will exit.
+6.7. `shim` becomes the new parent process.
+6.8. The process is complete and the container is up and running.
 7. The newly created container may produce output.
 8. The Docker daemon streamed that output to the Docker client, and its displayed in the terminal.
 
