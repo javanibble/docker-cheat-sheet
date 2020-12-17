@@ -111,23 +111,23 @@ The following is a list of the Docker Management commands:
 The `docker image` command is a management command that manage docker images. 
 
 **Help**
-* [`docker image --help`]() list all the docker image commands. [Reference](https://docs.docker.com/engine/reference/commandline/image/)
-* [`docker image COMMAND --help`]() list the explanation, usage, aliases and options for a docker image command.
+* [`docker image --help`](#) list all the docker image commands. [Reference](https://docs.docker.com/engine/reference/commandline/image/)
+* [`docker image COMMAND --help`](#) list the explanation, usage, aliases and options for a docker image command.
 
 #### Lifecycle
-* [`docker image build`]() build an image from a Dockerfile. [Reference](https://docs.docker.com/engine/reference/commandline/image_build/)
-* [`docker image import`]() import the contents from a tarball to create a filesystem image. [Reference](https://docs.docker.com/engine/reference/commandline/image_import/)
-* [`docker image load`]() load an image from a tar archive or STDIN. [Reference](https://docs.docker.com/engine/reference/commandline/image_load/)
-* [`docker image pull`]() pull an image or a repository from a registry. [Reference](https://docs.docker.com/engine/reference/commandline/image_pull/)
-* [`docker image push`]() push an image or a repository to a registry. [Reference](https://docs.docker.com/engine/reference/commandline/image_push/)
-* [`docker image save`]() Save one or more images to a tar archive (streamed to STDOUT by default). [Reference](https://docs.docker.com/engine/reference/commandline/image_save/)
-* [`docker image tag`]() Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE. [Reference](https://docs.docker.com/engine/reference/commandline/image_tag/)
+* [`docker image build`](#) build an image from a Dockerfile. [Reference](https://docs.docker.com/engine/reference/commandline/image_build/)
+* [`docker image import`](#) import the contents from a tarball to create a filesystem image. [Reference](https://docs.docker.com/engine/reference/commandline/image_import/)
+* [`docker image load`](#) load an image from a tar archive or STDIN. [Reference](https://docs.docker.com/engine/reference/commandline/image_load/)
+* [`docker image pull`](#) pull an image or a repository from a registry. [Reference](https://docs.docker.com/engine/reference/commandline/image_pull/)
+* [`docker image push`](#) push an image or a repository to a registry. [Reference](https://docs.docker.com/engine/reference/commandline/image_push/)
+* [`docker image save`](#) Save one or more images to a tar archive (streamed to STDOUT by default). [Reference](https://docs.docker.com/engine/reference/commandline/image_save/)
+* [`docker image tag`](#) Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE. [Reference](https://docs.docker.com/engine/reference/commandline/image_tag/)
 
 #### Info
-* [`docker image history`]() show the history of an image. [Reference](https://docs.docker.com/engine/reference/commandline/image_history/)
-* [`docker image inspect`]() display detailed information on one or more images. [Reference](https://docs.docker.com/engine/reference/commandline/image_inspect/)
-* [`docker image ls`]() list images. [Reference](https://docs.docker.com/engine/reference/commandline/image_ls/)
+* [`docker image history`](#) show the history of an image. [Reference](https://docs.docker.com/engine/reference/commandline/image_history/)
+* [`docker image inspect`](#) display detailed information on one or more images. [Reference](https://docs.docker.com/engine/reference/commandline/image_inspect/)
+* [`docker image ls`](#) list images. [Reference](https://docs.docker.com/engine/reference/commandline/image_ls/)
 
 #### Cleaning up
-* [`docker image prune`]() remove unused images. [Reference](https://docs.docker.com/engine/reference/commandline/image_prune/)
-* [`docker image rm`]() remove one or more images. [Reference](https://docs.docker.com/engine/reference/commandline/image_rm/)
+* [`docker image prune`](#) remove unused images. [Reference](https://docs.docker.com/engine/reference/commandline/image_prune/)
+* [`docker image rm`](#) remove one or more images. [Reference](https://docs.docker.com/engine/reference/commandline/image_rm/)
