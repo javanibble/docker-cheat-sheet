@@ -9,24 +9,20 @@
 ## Table of Contents
 * [Overview](#overview)
 * [Docker Architecture](#docker-architecture)
+* [Running Docker Containers](#running-docker-containers)
 * [Installation](#installation)
 * [Command-line Reference](#command-line-reference)
 
 ## Overview 
-<img
-  src="images/docker-overview.png"
-  width="500"
-  align="right"
-/>
 Docker uses a client-server architecture since the docker client and docker daemon is separate binaries. The client communicates with the daemon via a REST API (Network Interface, Unix Sockets). The docker client can connect to several docker daemons.
 * The docker client (`docker`) is used by the user to interact with docker and sends the commands to the docker daemon.
-* The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, etc...
+* The docker daemon (`dockerd`) is the persistent process that manages docker objects like containers, images, volumes, networks, etc...
 * The docker registry stores docker images. The docker hub is a public registry and is used by docker by default to look for images.
 
 **Docker Objects**
 * A *docker image* is a read-only template with instructions for creating a docker container. An image can be based on another image. Use a Dockerfile to build your own image. Each instruction in a Dockerfile creates a layer in the image.
 * A *docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container via the docker client (cli) or docker API; connect a container to network; attach storage; create a new image from the container.
-* A *docker service* scale containers across multiple docker daemons. Each member of the swarm is a docker daemon. A service defines the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
+* A *docker service* scale containers across multiple docker daemons (master & workers). Each member of the swarm is a docker daemon. A service defines the desired state eg. number of replicas. The service is load-balanced across all worker nodes.
 
 For more details, please read the official [Docker Documentation](https://docs.docker.com/get-started/overview/).
 
@@ -41,14 +37,13 @@ For more details, please read the official [Docker Documentation](https://docs.d
 The Docker Engine acts as a client-server application with:
 
 * Client: The docker client (`docker`) is used by the user to interact with docker and sends the commands to the docker daemon.
-* API: The docker API interacts with the docker daemon. 
+* API: The docker API allows clients to interact with the docker daemon in a stadardised manner.
 * Server: The docker server has a long-running daemon process called `dockerd` (docker daemon). It relies on a OCI compliant runtime (invoked via the `containerd` daemon) as its interface to the Linux kernel namespaces, cgroups, and SELinux.
 
-Other components within the docker architecture are:
+External components:
 * `containerd` is the container daemon and was originally built as an integration point for OCI runtimes like runc. The container lifecycle management functionality was moved out of the docker daemon into the container daemon.  ([Reference](https://containerd.io/))
 * `runc` is the implementation for the OCI container runtime specification. It is a CLI tool for spawning and running containers according to the OCI specification. ([Reference](https://github.com/opencontainers/runc))
-* `shim` is used to decouple the daemons from the containers.
-
+* `shim` is used to decouple the daemons from the containers. `containerd` forks an instance  of `runc` for each container. The `shim` process becomes the new container parent after the container is created and the `runc` process exits.
 
 **Open Container Initiative**
 
@@ -58,7 +53,38 @@ The Open Container Initiative (OCI) is an open governance structure for the expr
 
 For more details on the *Open Container Specification*, please visit the sites:[Website](https://opencontainers.org/) & [Github](https://github.com/opencontainers).
 
+## Running Docker Containers
+<img
+  src="images/docker-overview.png"
+  width="500"
+  align="right"
+/>
+To run a docker container, you should use the following command:
 
+```shell
+# A template for running a docker container.
+$ docker container run -it --name <Name> <IMAGE>:<TAG>
+
+$ docker container run -it --name my-ubuntu ubuntu:latest bash
+```
+
+Docker takes the following steps after the command listed above is executed:
+1. The above command forms part of the Docker CLI.
+2. The docker client creates the appropriate API paylod based on the docker command, options and arguments.
+3. The docker client invokes the REST endpoint (POST) together with the payload.
+4. The docker daemon recieves the payload and performs the instructions.
+5. The docker daemon pulled the "Ubuntu" image from the Docker Hub (public registry)
+6. The docker daemon creates a new container from that image by performing the next steps:
+6.1 The docker daemon calls `containerd` to start a new container.
+6.2 The docker daemon uses `gRPC` to communicate with the `containerd`. (CRUD Style API) 
+6.3 `containerd` creates an OCI bundle from the Docker image. 
+6.4 `containerd` instructs `runc` to create a container using the OCI bundle.
+6.5 `runc` interfaces with the OS kernel to get the constructs needed to create a container. (namespaces, cgroups, etc...)
+6.6 `runc` starts the container as a child process. Once the container comes online, `runc` will exit.
+6.7 `shim` becomes the new parent process.
+6.8 The process is complete and the container is up and running.
+7. The newly created container may produce output.
+8. The Docker daemon streamed that output to the Docker client, and its displayed in the terminal.
 
 
 ## Installation
